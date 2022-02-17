@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 function Post( {post} )  {
     const { id, caption, location, photo } = post;
