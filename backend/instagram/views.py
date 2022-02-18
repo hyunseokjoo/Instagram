@@ -5,7 +5,7 @@ from .models import Post
 from .serializers import PostSerializer
 
 class PostViewSet(ModelViewSet):
-    queryset = Post.object.all()
+    queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [AllowAny] # FIXME : 인증 적용
 
