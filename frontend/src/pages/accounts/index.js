@@ -1,19 +1,22 @@
-import React from 'react'
-import { Outlet, Route, Routes } from 'react-router-dom';
-import Login from './Login';
-import Profile from './Profile';
-import Signup from './Signup';
+import React from "react";
+import { Route } from "react-router-dom";
+import Login from "./Login";
+import Profile from "./Profile";
+import Signup from "./Signup";
+import LoginRequiredRoute from "utils/LoginRequiredRoute";
 
-function Accounts () {
-    return (
-        <>
-            <Routes>
-                <Route path="profile" element={<Profile/>} />
-                <Route path="login" element={<Login/>} />
-                <Route path="signup" element={<Signup/>} />
-            </Routes>
-        </>
-    );
+function Routes({ match }) {
+  return (
+    <>
+      <LoginRequiredRoute
+        exact
+        path={match.url + "/profile"}
+        component={Profile}
+      />
+      <Route exact path={match.url + "/login"} component={Login} />
+      <Route exact path={match.url + "/signup"} component={Signup} />
+    </>
+  );
 }
 
-export default Accounts;
+export default Routes;
